@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fun Facts Generator</title>
+    <style>
+        /* Dark Theme CSS */
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #121212; /* Dark background color */
+            color: #e0e0e0; /* Light text color for contrast */
+        }
+
+        .container {
+            text-align: center;
+            background-color: #1e1e1e; /* Slightly lighter dark color for the container */
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .container:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.7);
+        }
+
+        .fact-display {
+            margin: 20px 0;
+            font-size: 1.4em;
+            color: #e0e0e0;
+            transition: color 0.3s ease;
+        }
+
+        .generate-button {
+            padding: 12px 24px;
+            font-size: 1.1em;
+            color: #ffffff;
+            background-color: #bb86fc; /* Accent color for the button */
+            border: none;
+            border-radius: 25px;
+            cursor: pointer;
+            transition: background-color 0.3s ease, transform 0.3s ease;
+        }
+
+        .generate-button:hover {
+            background-color: #3700b3; /* Darker shade for hover effect */
+            transform: scale(1.05);
+        }
+
+        .generate-button:active {
+            transform: scale(0.95);
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Fun Facts About Universe</h1>
+        <div id="fact-display" class="fact-display">Click the button to see a fun fact!</div>
+        <button id="generate-fact" class="generate-button">Generate Fun Fact</button>
+    </div>
+    <audio id="click-sound" src="click-sound.mp3"></audio>
+    <script>
+        // Inline JavaScript with Sound
+        const facts = [
+            "The universe is approximately 13.8 billion years old.",
+            "There are more stars in the universe than grains of sand on all the Earth's beaches.",
+            "The universe is expanding, and galaxies are moving away from each other.",
+            "Dark matter makes up about 27% of the universe, but we can't see it.",
+            "The observable universe is about 93 billion light-years in diameter.",
+            "Black holes are regions of space where gravity is so strong that nothing can escape from them.",
+            "The Milky Way galaxy is on a collision course with the Andromeda galaxy.",
+            "Neutron stars are so dense that a sugar-cube-sized amount would weigh about as much as all of humanity.",
+            "The speed of light is the fastest speed in the universe, at about 299,792 kilometers per second.",
+            "The Big Bang theory is the leading explanation for how the universe began."
+        ];
+
+        document.getElementById('generate-fact').addEventListener('click', function() {
+            const randomIndex = Math.floor(Math.random() * facts.length);
+            document.getElementById('fact-display').textContent = facts[randomIndex];
+            document.getElementById('click-sound').play();
+        });
+    </script>
+</body>
+</html>
